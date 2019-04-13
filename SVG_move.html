@@ -1,0 +1,22 @@
+<!--jsで描画したSVGの幅を伸ばしたり、そのままの幅で左右に動かせます。ダミーとして置いたinput欄にカーソルを合わせて、上下左右の矢印キーで試してみてください-->
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+<div id="app">
+      <svg id="box_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+      <!--後からJSで描画-->
+      </svg>
+    <input v-on:keydown.up="Up" v-on:keydown.down="Down" v-on:keydown.right="Right" v-on:keydown.left="Left"><br>
+  <span>SVGの始点x座標={{ x }}</span><br>
+  <span>SVGの始点x座標={{ y }}</span><br>
+  <span>SVGの幅={{ width }}</span><br>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+<script>
+
+</script>
+</body>
+</html>
