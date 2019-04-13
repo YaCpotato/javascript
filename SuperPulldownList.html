@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+<body>
+  <div id="app">
+    <select v-model="selectedVagetable" v-on:change="getSelectedVagetable($event)">
+      <option disabled value="" selected>野菜</option>
+      <option v-for="vagetable in vagetableList">{{ vagetable }}</option>
+    </select>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script>
+<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+      vagetableList:['ニンジン','ダイコン','ジャガイモ','トマト'],
+      selectedVagetable:''
+    },
+  methods:{
+      getSelectedVagetable:function(event){
+        if(this.selectedVagetable=="ニンジン"){
+          console.log(this.selectedVagetable)
+          this.selectedVagetable=''
+        }else if(this.selectedVagetable=="ダイコン"){
+          console.log(this.selectedVagetable)
+          this.selectedVagetable=''
+        }else if(this.selectedVagetable=="ジャガイモ"){
+          console.log(this.selectedVagetable)
+          this.selectedVagetable=''
+        }else if(this.projectSelected=="トマト"){
+          console.log(this.selectedVagetable)
+          this.selectedVagetable=''
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>
