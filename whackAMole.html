@@ -9,7 +9,10 @@
       </svg>
       <span>あなたの現在の得点は{{ clickcount }}点</span>
 </div>
+<div id="timer">
+  <button v-on:click="start">スタート</button>
+  {{ time }}
+</div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-<script src="whackAMole.js"></script>
 </body>
 </html>
