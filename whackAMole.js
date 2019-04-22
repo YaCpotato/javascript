@@ -7,6 +7,31 @@ $(document).on('click', '#false', function(){
   console.log('違うンゴ');
 });
 
+var timer=new Vue({
+  el:'#timer',
+  data:{
+    time:30,
+    id:''
+  },
+  methods:{
+    countdown:function(){
+      this.time--
+    },
+    start:function(event){
+        var count = 30;
+    var countdown = function(){
+    console.log(count--);
+    var id = setTimeout(countdown, 1000);
+    if(count == 0){　
+      clearTimeout(id);　//idをclearTimeoutで指定している
+      alert('あなたの得点は'+app.clickcount+'点')
+    }
+  }
+  countdown(); 
+    }
+  }
+})
+
 var app=new Vue({
     el:'#app',
     data:{
