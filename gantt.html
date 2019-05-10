@@ -1,0 +1,48 @@
+<div id="app">
+  <vuejs-datepicker v-model="StartDate" :value="this.default" :format="DatePickerFormat" ></vuejs-datepicker>
+    <vuejs-datepicker v-model="EndDate" :format="DatePickerFormat"></vuejs-datepicker>
+<p>
+  {{ DateFormat(StartDate) }}
+  {{ DateFormat(EndDate) }}
+</p>
+<p>{{ PeriodCalc() }}</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/vuejs-datepicker"></script>
+<script>
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    default:moment(),
+    DatePickerFormat: 'yyyy/MM/dd',
+    StartDate:'',
+    EndDate:'',
+    Period:0,
+  },
+  methods:{
+    DateFormat:function(date){
+      return moment(date).format('YYYY/MM/DD')
+    },
+    MomentFormat:function(date){
+      return moment(date)
+    },
+    PeriodCalc:function(stdate,endate){
+      this.Period = this.MomentFormat(this.EndDate).diff(this.MomentFormat(this.StartDate),'days')
+      this.PeriodSet = true
+      return this.Period
+    },
+    setCalendar:function(){
+      
+    }
+    
+  },
+  components: {
+    vuejsDatepicker
+  }
+});
+
+</script>
