@@ -1,4 +1,7 @@
-<div id="app">
+<html>
+<body>
+<div id="all">
+<div id="getDate">
   <vuejs-datepicker v-model="StartDate" :value="this.default" :format="DatePickerFormat" ></vuejs-datepicker>
     <vuejs-datepicker v-model="EndDate" :format="DatePickerFormat"></vuejs-datepicker>
 <p>
@@ -7,67 +10,39 @@
 </p>
 <p>{{ PeriodCalc() }}</p>
 </div>
-
+<div id="calendar">
+  {{ Year }}
+  {{ Month }}
+  {{ Day }}
+  <hr>
+  <table border="1" id="headtable">
+    <thead>
+      <tr>
+        <td id="headyear" v-for="year in Year">{{ year }}</td>
+      </tr>
+      <tr>
+        <td id="headmonth" v-for="month in Month">{{ month }}</td>
+      </tr>
+      <tr>
+        <td id="headday" v-for="day in Day">{{ day }}</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+<style>
+body{
+  width:500px;
+  height:400px;
+  background-color: lightblue;
+}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://unpkg.com/vuejs-datepicker"></script>
-<script>
-var app = new Vue({
-  el: '#app',
-  data: {
-    default:moment(),
-    DatePickerFormat: 'yyyy/MM/dd',
-    StartDate:'',
-    EndDate:'',
-    Period:0,
-    Day:[],
-    Daycount:[],
-    Month:[]
-  },
-  methods:{
-    DateFormat:function(date){
-      return moment(date).format('YYYY/MM/DD')
-    },
-    MomentFormat:function(date){
-      return moment(date)
-    },
-    PeriodCalc:function(stdate,endate){
-      if(this.StartDate!='' && this.EndDate!=''){
-        console.log('Period Calc')
-        this.Period = moment(this.EndDate).diff(moment(this.StartDate),'days')
-        this.PeriodSet = true
-        this.setMonth()
-        this.setDay()
-        console.log('Period='+this.Period)
-        return this.Period
-      }
-    },
-    setMonth:function(){
-      
-      var StartMonth = moment(this.StartDate).month() + 1
-      console.log('始まりの月：'+StartMonth)
-      var EndMonth = moment(this.EndDate).month() + 1
-      console.log('終わりの月：'+EndMonth)
-      
-      var countMonth = EndMonth - StartMonth
-      console.log('月はいくつまたぐか：'+countMonth)
-      
-      for(var i=0;i<=countMonth;i++){
-        this.Month[i] = this.MomentFormat(this.StartDate).month() + (i+1)
-      }
-      console.log('表示すべき月はいくつか：'+this.Month)
-    },
+</div>
+  <script>
     
-    setDay:function(){
-      for(var i=0;i<=this.Period;i++){
-       this.Day[i] = moment(this.StartDate).add(i,'days').date()
-      }
-      console.log('表示すべき日はいくつか'+this.Day)
-    }
-  },
-  components: {
-    vuejsDatepicker
-  }
-});
-</script>
+  </script>
+</body>
+</html>
