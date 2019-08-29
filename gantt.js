@@ -59,6 +59,7 @@ var gantt = new Gantt("#gantt", app.tasks,{
                  end : moment(end).format('YYYY-MM-DD'),
                }
                app.tasks.splice(i,1,item)
+               gantt.refresh(app.tasks)
                break;
              }
              break;
