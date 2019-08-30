@@ -17,7 +17,7 @@
 <svg id="gantt"></svg>
 
 <script>
- var app = new Vue({
+var app = new Vue({
   el:'#app',
   data:{
     tasks : [
@@ -50,7 +50,11 @@
 
 var gantt = new Gantt("#gantt", app.tasks,{
         on_date_change: function(task, start, end) {
-           for(var i=0;i<gantt.tasks.length;i++){
+          console.log('日が変わった')
+          console.log(app.tasks.length)
+           for(var i=0;i<app.tasks.length;i++){
+             console.log(app.tasks[i].id)
+             console.log(task.id)
              if(app.tasks[i].id == task.id){
                console.log('判定')
                var item={
@@ -60,9 +64,7 @@ var gantt = new Gantt("#gantt", app.tasks,{
                }
                app.tasks.splice(i,1,item)
                gantt.refresh(app.tasks)
-               break;
              }
-             break;
            }
         },
         on_progress_change: function(task, progress) {
