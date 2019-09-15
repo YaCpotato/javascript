@@ -5,6 +5,7 @@
     <script src='https://unpkg.com/v-calendar'></script>
   </head>
 <body>
+  <button id="start-gantt">StartGantt</button>
 <div id="app">
   <li v-for="task in tasks">
     <span>{{ task.progress }}</span>
@@ -12,13 +13,13 @@
     <span>{{ task.start }}</span>
     <span>{{ task.end }}</span>
   </li>
-  <input v-model="id"><input v-model="name">
+  <input v-model="id" placeholder="instant id"><input v-model="name" placeholder="name">
   開始日<v-date-picker :mode="'single'"
                :formats="formats"
                v-model="start"></v-date-picker>
   終了日<v-date-picker :mode="'single'"
                :formats="formats"
-               v-model="start"></v-date-picker>
+               v-model="end"></v-date-picker>
   <button @click="regist">登録</button>
 </div><br>
 <svg id="gantt"></svg>
@@ -27,15 +28,8 @@
 var app = new Vue({
   el:'#app',
   data:{
-    tasks : [
-      {
-        id: 0,
-        name: 'my name',
-        start: '2016-12-28',
-        end: '2016-12-31',
-        progress: 20,
-      },
-    ],
+    gantt:{},
+    tasks : [],
     id:null,
     name:'',
     start:'',
@@ -46,6 +40,9 @@ var app = new Vue({
     },
   },
   methods:{
+    startGantt:function(){
+      
+    },
     regist:function(){
       this.tasks.push({
         id: this.id,
@@ -59,12 +56,11 @@ var app = new Vue({
   },
 })
 
-var gantt = new Gantt("#gantt", app.tasks,{
+ document.getElementById("start-gantt").onclick = function() {
+   if(app.tasks.length >= 1){
+   var gantt = new Gantt("#gantt", app.tasks,{
         on_date_change: function(task, start, end) {
-          console.log(app.tasks.length)
            for(var i=0;i<app.tasks.length;i++){
-             console.log(app.tasks[i].id)
-             console.log(task.id)
              if(app.tasks[i].id == task.id){
                var item={
                  name:task.name,
@@ -77,10 +73,9 @@ var gantt = new Gantt("#gantt", app.tasks,{
              }
            }
         },
-        on_progress_change: function(task, progress) {
-            console.log(task, progress);
-        },
  });
+ }
+};
 </script>
 </body>
 </html>
