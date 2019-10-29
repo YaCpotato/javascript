@@ -10,10 +10,39 @@
       userInput:'',
       words:'apple',
       wordsList:[
-        'apple',
-        'banana',
-        'melon'
-      ]
+//topic
+'Artificial Interigence',
+'Machine Learning',
+'Deep Learning',
+'Reinforcement Learning',
+
+//networkarchitecture
+'Convolutional Neural Network',
+'Recurrent Neural Network',
+'Long Short Term Memory',
+'Neural Network', 
+'Neural Architecture Search',
+
+'Sapport Vector Machine',
+//kindofRegression
+'Linear Regression',
+'Quantile Regression',
+'Robust Regression',
+
+//loss function
+'cross entropy error',
+'Mean Absolute Error',
+'Mean Squared Error',
+'Mean Absolute Error',
+'Mean Squared Logarithmic Error'
+
+//activation function
+'Activation',
+'sigmoid',
+'softmax',
+'Rectified Linear Unit',
+'Support Vector Regression'
+]
     },
     methods:{
       pushEnter:function(){
